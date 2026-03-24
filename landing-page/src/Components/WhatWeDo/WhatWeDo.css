@@ -1,0 +1,243 @@
+/* ══════════════════════════════════════
+   SECTION: What We Do — Pinned Fade
+   ══════════════════════════════════════ */
+
+.wwd-section {
+  position: relative;
+  background-color: #050505;
+  color: #ffffff;
+  /* Total height = 1 viewport (pinned) + 3 extra viewports for scrolling through 4 cards */
+  height: 400vh;
+}
+
+/* ── Pinned visible UI ── */
+.wwd-pinned {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 4rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Two-column layout ── */
+.wwd-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  box-sizing: border-box;
+}
+
+/* ── LEFT column ── */
+.wwd-left {
+  flex: 0 0 420px;
+  min-width: 0;
+}
+
+.wwd-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  margin: 0 0 2rem 0;
+  line-height: 1.1;
+}
+
+/* ── Image frame ── */
+.wwd-image-frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.wwd-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wwd-image.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Step indicator dots ── */
+.wwd-step-indicator {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.wwd-dot {
+  width: 32px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.4s ease, width 0.4s ease;
+}
+
+.wwd-dot.active {
+  background: #22ff71;
+  width: 48px;
+}
+
+/* ── RIGHT column ── */
+.wwd-right {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  min-height: 280px;
+}
+
+/* ── Cards — stacked on top of each other, only active is visible ── */
+.wwd-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3.5rem 3rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  pointer-events: none;
+}
+
+.wwd-card.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Hover glow */
+.wwd-card:hover {
+  background: #22ff71;
+  border-color: #22ff71;
+  box-shadow: 0 15px 35px rgba(34, 255, 113, 0.3);
+}
+
+.wwd-card:hover h3,
+.wwd-card:hover .wwd-step-number {
+  color: #000000;
+}
+
+.wwd-card:hover p {
+  color: #1a1a1a;
+}
+
+.wwd-card:hover .accent-line {
+  background-color: #000000;
+}
+
+/* ── Step number watermark ── */
+.wwd-step-number {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.06);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transition: color 0.4s ease;
+}
+
+/* ── Card inner elements ── */
+.wwd-card .accent-line {
+  width: 36px;
+  height: 3px;
+  background-color: #22ff71;
+  margin-bottom: 1.8rem;
+  transition: background-color 0.4s ease;
+}
+
+.wwd-card h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: color 0.4s ease;
+}
+
+.wwd-card p {
+  color: #a1a1aa;
+  line-height: 1.65;
+  font-size: 1.05rem;
+  margin: 0;
+  transition: color 0.4s ease;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .wwd-section {
+    height: auto;
+  }
+
+  .wwd-pinned {
+    position: relative;
+    height: auto;
+    padding: 4rem 1.5rem;
+  }
+
+  .wwd-layout {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .wwd-left {
+    flex: none;
+    width: 100%;
+  }
+
+  .wwd-title {
+    font-size: 2.5rem;
+  }
+
+  .wwd-image-frame {
+    aspect-ratio: 16 / 9;
+  }
+
+  .wwd-right {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .wwd-card {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    transform: none;
+    padding: 2rem 1.5rem;
+    pointer-events: auto;
+  }
+
+  .wwd-step-number {
+    font-size: 3rem;
+  }
+}

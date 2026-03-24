@@ -1,0 +1,204 @@
+/* ══════════════════════════════════════
+   SECTION: Mission — Sticky Scroll Reveal
+   ══════════════════════════════════════ */
+
+.mission-section {
+  position: relative;
+  background-color: #ffffff;
+  height: 300vh; /* Scroll space for the animation */
+}
+
+.mission-pinned {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8rem 0 6rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Vertical brand label ── */
+.mission-label {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mission-label-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #22ff71;
+  display: block;
+  flex-shrink: 0;
+}
+
+.mission-label-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+
+/* ── Main container ── */
+.mission-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+/* ── Image ── */
+.mission-image-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.mission-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Copy ── */
+.mission-copy {
+  flex: 0 0 45%;
+  max-width: 520px;
+  text-align: left;
+}
+
+.mission-tagline {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin: 0 0 1.5rem 0;
+  will-change: transform, opacity;
+}
+
+.mission-highlight {
+  color: #999;
+  font-style: italic;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.mission-highlight:hover {
+  color: #22ff71;
+}
+
+.mission-desc {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 2.5rem 0;
+  font-weight: 400;
+  text-align: left;
+  will-change: transform, opacity;
+}
+
+/* ── CTA Button ── */
+.mission-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  min-width: 200px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #1a1a1a;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.mission-cta:hover {
+  background-color: #22ff71;
+  box-shadow: 0 10px 30px rgba(34, 255, 113, 0.25);
+}
+
+/* Text label */
+.mission-cta-text {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  color: inherit;
+  margin-right: 2rem;
+}
+
+.mission-cta:hover .mission-cta-text {
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+/* Arrow */
+.mission-arrow {
+  position: absolute;
+  right: 2rem;
+  font-size: 1.4rem;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: inherit;
+}
+
+.mission-cta:hover .mission-arrow {
+  right: 50%;
+  transform: translateX(50%);
+  color: #000000;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .mission-section {
+    height: auto;
+  }
+
+  .mission-pinned {
+    position: relative;
+    height: auto;
+    padding: 5rem 1.5rem 5rem 3.5rem;
+  }
+
+  .mission-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .mission-copy {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .mission-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .mission-label {
+    left: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-label {
+    display: none;
+  }
+
+  .mission-pinned {
+    padding: 4rem 1.5rem;
+  }
+}
