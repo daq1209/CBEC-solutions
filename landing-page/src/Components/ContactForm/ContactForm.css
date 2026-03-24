@@ -211,15 +211,38 @@
   }
 
   .contact-right {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.2rem;
+  }
+
+  .contact-close {
+    top: 1rem;
+    right: 1rem;
+    width: 38px;
+    height: 38px;
+  }
+
+  .contact-form {
+    gap: 2rem;
+    padding-top: 3rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;
+  }
+
+  .contact-submit {
+    width: 100%;
+    text-align: center;
   }
 
   .contact-form-footer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 1rem;
   }
 
   .contact-privacy {
-    text-align: left;
+    text-align: center;
   }
 }

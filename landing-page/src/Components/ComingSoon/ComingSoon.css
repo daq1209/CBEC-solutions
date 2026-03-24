@@ -71,8 +71,24 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .cs-section {
-    height: 200vh;
+    height: auto;
+  }
+
+  .cs-pinned {
+    position: relative;
+    height: auto;
+    padding: 4rem 1.5rem;
+  }
+
+  .cs-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .cs-word {
+    font-size: 1rem;
+    color: #1a1a1a;
   }
 }

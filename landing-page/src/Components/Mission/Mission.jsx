@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useIsMobile from '../../hooks/useIsMobile';
 import './Mission.css';
 import missionImg from '../../assets/mission-section/pexels-karola-g-4464815.jpg';
 
@@ -7,8 +8,11 @@ const Mission = () => {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
   const [progress, setProgress] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return; // Skip scroll logic on mobile
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -24,16 +28,16 @@ const Mission = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile]);
 
-  // Everything reveals together in the first 30% of scroll
-  const contentOpacity = Math.min(1, progress / 0.3);
-  const contentY = Math.max(0, 40 * (1 - progress / 0.3));
+  // On mobile, everything is fully visible
+  const contentOpacity = isMobile ? 1 : Math.min(1, progress / 0.3);
+  const contentY = isMobile ? 0 : Math.max(0, 40 * (1 - progress / 0.3));
 
   return (
     <section className="mission-section" ref={sectionRef} id="mission">
       <div className="mission-pinned">
-        {/* Vertical brand label — reveals together with content */}
+        {/* Vertical brand label */}
         <div
           className="mission-label"
           style={{ opacity: contentOpacity, transform: `translateY(-50%) rotate(180deg) translateX(${-contentY}px)` }}
@@ -43,12 +47,12 @@ const Mission = () => {
         </div>
 
         <div className="mission-container">
-          {/* LEFT: Image (always visible) */}
+          {/* LEFT: Image */}
           <div className="mission-image-wrap">
             <img src={missionImg} alt="CBEC Solutions" className="mission-image" />
           </div>
 
-          {/* RIGHT: All content appears at once */}
+          {/* RIGHT: Content */}
           <div
             className="mission-copy"
             style={{ opacity: contentOpacity, transform: `translateY(${contentY}px)` }}

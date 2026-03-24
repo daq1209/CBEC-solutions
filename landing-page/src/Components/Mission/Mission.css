@@ -184,21 +184,49 @@
     max-width: 100%;
   }
 
-  .mission-image {
-    aspect-ratio: 16 / 9;
-  }
-
   .mission-label {
     left: 0.8rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .mission-image-wrap {
+    display: none;
+  }
+
   .mission-label {
     display: none;
   }
 
   .mission-pinned {
-    padding: 4rem 1.5rem;
+    padding: 3rem 1.2rem;
+  }
+
+  .mission-tagline {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .mission-desc {
+    font-size: 0.95rem;
+  }
+
+  .mission-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Disable text-slide animation on mobile */
+  .mission-cta:hover .mission-cta-text {
+    transform: none;
+    opacity: 1;
+  }
+
+  .mission-cta:hover .mission-arrow {
+    right: 2rem;
+    transform: none;
+  }
+
+  .mission-highlight {
+    color: #22ff71;
   }
 }

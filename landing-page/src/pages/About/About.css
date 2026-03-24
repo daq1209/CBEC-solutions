@@ -186,4 +186,8 @@
   .cv-grid {
     grid-template-columns: 1fr;
   }
+
+  .mobile-break {
+    display: block;
+  }
 }

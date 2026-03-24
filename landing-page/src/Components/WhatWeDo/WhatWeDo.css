@@ -217,10 +217,6 @@
     font-size: 2.5rem;
   }
 
-  .wwd-image-frame {
-    aspect-ratio: 16 / 9;
-  }
-
   .wwd-right {
     min-height: auto;
     display: flex;
@@ -239,5 +235,56 @@
 
   .wwd-step-number {
     font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .wwd-image-frame,
+  .wwd-step-indicator {
+    display: none;
+  }
+
+  .wwd-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .wwd-pinned {
+    padding: 3rem 1.2rem;
+  }
+
+  .wwd-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .wwd-card:hover {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  .wwd-card:hover h3,
+  .wwd-card:hover .wwd-step-number {
+    color: #ffffff;
+  }
+
+  .wwd-card:hover p {
+    color: #a1a1aa;
+  }
+
+  .wwd-card:hover .accent-line {
+    background-color: #22ff71;
+  }
+
+  .wwd-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .wwd-card p {
+    font-size: 0.95rem;
+  }
+
+  .wwd-step-number {
+    font-size: 2.5rem;
   }
 }

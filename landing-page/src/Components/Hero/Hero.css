@@ -173,3 +173,52 @@
 .hero-content h1 {
   animation: fadeInSlide 1s ease-out 0.5s both;
 }
+
+/* ══════════════════════════════════════
+   MOBILE
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .hero-content {
+    padding: 1.5rem 0;
+    margin-top: 5rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    white-space: normal;
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-brad {
+    font-size: 0.85rem;
+  }
+
+  .hero-brad::before {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hero-buttons {
+    animation: none;
+    opacity: 1;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-pill {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

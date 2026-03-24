@@ -7,7 +7,7 @@ const About = () => {
       <section className="about-hero">
         <div className="about-hero-content">
           <p className="about-label">About Us</p>
-          <h1>We build what <span className="accent">sells.</span></h1>
+          <h1>We build <span className="mobile-break">what <span className="accent">sells.</span></span></h1>
           <p className="about-subtitle">
             Based in Vietnam, CBEC Solutions is your cross‑border commerce partner. We combine strategic insight, data‑driven research and hands‑on execution to help you build products that sell and brands that last. Join our community and be the first to know when we launch.
           </p>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import useIsMobile from '../../hooks/useIsMobile';
 import './ComingSoon.css';
 
 const title = 'Coming Soon';
@@ -7,8 +8,11 @@ const paragraph = 'We help brands identify winning products for the US and Europ
 const ComingSoon = () => {
   const sectionRef = useRef(null);
   const [progress, setProgress] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return; // Skip scroll logic on mobile
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -25,17 +29,15 @@ const ComingSoon = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile]);
 
   const words = paragraph.split(' ');
   const totalWords = words.length;
 
-  // Title fades in during first 15% of scroll
-  const titleOpacity = Math.min(1, progress / 0.15);
-
-  // Words reveal between 15% and 95% of scroll
-  const wordProgress = Math.max(0, (progress - 0.15) / 0.8);
-  const revealedWordCount = Math.floor(wordProgress * totalWords);
+  // On mobile, everything is fully visible
+  const titleOpacity = isMobile ? 1 : Math.min(1, progress / 0.15);
+  const wordProgress = isMobile ? 1 : Math.max(0, (progress - 0.15) / 0.8);
+  const revealedWordCount = isMobile ? totalWords : Math.floor(wordProgress * totalWords);
 
   return (
     <section className="cs-section" ref={sectionRef} id="coming-soon">
